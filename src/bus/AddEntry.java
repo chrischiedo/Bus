@@ -4,6 +4,8 @@ package bus;
  *
  * @author chiedo
  */
+
+// Import java libraries
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
