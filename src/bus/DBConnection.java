@@ -11,12 +11,15 @@ import java.sql.SQLException;
 public class DBConnection {
     public static Connection getDBConnection() throws SQLException {
         Connection connection = null;
+
+        // Note that using a plaintext password like in this case isn't a good practice!
+        // Did this for local testing ONLY! It is highly recommended that a hash of the
+        // password is used instead, especially in production code.
         try {
-            //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/bus?useSSL=false", "root",
-                    "chiedo7saleh"); // Note that using a plaintext password like this isn't a good practice!
-                                              // Did this for local testing ONLY! Consider hashing the password in
-                                              // production.
+            connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost/bus?useSSL=false",
+                        "root",
+                        "chiedo7saleh");
             return connection;
         } catch (SQLException e) {
             System.err.println(e);
