@@ -13,7 +13,10 @@ public class DBConnection {
         Connection connection = null;
         try {
             //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/bus", "root", "chiedo7saleh");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/bus?useSSL=false", "root",
+                    "chiedo7saleh"); // Note that using a plaintext password like this isn't a good practice!
+                                              // Did this for local testing ONLY! Consider hashing the password in
+                                              // production.
             return connection;
         } catch (SQLException e) {
             System.err.println(e);
