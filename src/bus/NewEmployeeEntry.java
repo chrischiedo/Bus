@@ -49,7 +49,7 @@ public class NewEmployeeEntry extends JInternalFrame {
     private final JComboBox cbogender;
     private final DateButton dobs;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
     final JFileChooser fc = new JFileChooser();
     String getPicture;

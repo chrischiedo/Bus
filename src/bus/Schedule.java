@@ -11,15 +11,15 @@ import java.sql.*;
 
 public class Schedule extends JInternalFrame {
 
-    private final JLabel BusNo;
-    private final JLabel RegNo;
-    private final JLabel RouteNo;
-    private final JLabel RouteName;
-    private final JLabel DriverNo;
-    private final JLabel DriverName;
-    private final JLabel DeptTime;
+    private final JLabel busNumber;
+    private final JLabel regNumber;
+    private final JLabel routeNumber;
+    private final JLabel routeName;
+    private final JLabel driverNumber;
+    private final JLabel driverName;
+    private final JLabel departureTime;
     private final JLabel date;
-    private final JLabel Trip;
+    private final JLabel trip;
     private final JComboBox cboBusNo;
     private final JComboBox cboRouteNo;
     private final JComboBox cboRouteName;
@@ -28,13 +28,13 @@ public class Schedule extends JInternalFrame {
     private final JComboBox cboRegNo;
     private final JComboBox cboTrip;
     private final JTextField txtDepTime;
-    private JTextField txtdate;
-    private final JButton Check;
-    private final JButton Schedule;
-    private final JButton Cancel;
+    private JTextField txtDate;
+    private final JButton check;
+    private final JButton schedule;
+    private final JButton cancel;
     private final JButton btnPrint;
-    private final DateButton s_date;
-    int Year;
+    private final DateButton sDate;
+    int year;
     String is;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     private final JPanel jPanel1;
@@ -42,20 +42,20 @@ public class Schedule extends JInternalFrame {
     private final JPanel jPanel4;
     private final JPanel jPanel5;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
 
     public Schedule() {
         super("Scheduling Process", false, true, false, true);
-        BusNo = new JLabel("Bus Number ");
-        RegNo = new JLabel("Reg Number ");
-        RouteNo = new JLabel("Route Number");
-        RouteName = new JLabel("Route Name ");
-        DriverNo = new JLabel("Driver Number");
-        DriverName = new JLabel("Driver Name");
+        busNumber = new JLabel("Bus Number ");
+        regNumber = new JLabel("Reg Number ");
+        routeNumber = new JLabel("Route Number");
+        routeName = new JLabel("Route Name ");
+        driverNumber = new JLabel("Driver Number");
+        driverName = new JLabel("Driver Name");
         date = new JLabel("Date Scheduled");
-        Trip = new JLabel("Trip Number");
-        DeptTime = new JLabel("Departure Time");
+        trip = new JLabel("Trip Number");
+        departureTime = new JLabel("Departure Time");
 
         cboBusNo = new JComboBox();
         cboRegNo = new JComboBox();
@@ -65,52 +65,52 @@ public class Schedule extends JInternalFrame {
         cboDriverName = new JComboBox();
         txtDepTime = new JTextField(10);
         cboTrip = new JComboBox();
-        Check = new JButton("View Shedules", new ImageIcon(ClassLoader.getSystemResource("images/viewschd.png")));
-        Schedule = new JButton("Schedule", new ImageIcon(ClassLoader.getSystemResource("images/schd.png")));
-        Cancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
+        check = new JButton("View Shedules", new ImageIcon(ClassLoader.getSystemResource("images/viewschd.png")));
+        schedule = new JButton("Schedule", new ImageIcon(ClassLoader.getSystemResource("images/schd.png")));
+        cancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
         btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
-        s_date = new DateButton();
+        sDate = new DateButton();
         cboTrip.addItem("1");
         cboTrip.addItem("2");
         //Labels Settings
-        BusNo.setFont(new Font("sansserif", Font.ITALIC, 14));
-        RegNo.setFont(new Font("sansserif", Font.ITALIC, 14));
-        RouteNo.setFont(new Font("sansserif", Font.ITALIC, 14));
-        RouteName.setFont(new Font("sansserif", Font.ITALIC, 14));
-        DriverNo.setFont(new Font("sansserif", Font.ITALIC, 14));
+        busNumber.setFont(new Font("sansserif", Font.ITALIC, 14));
+        regNumber.setFont(new Font("sansserif", Font.ITALIC, 14));
+        routeNumber.setFont(new Font("sansserif", Font.ITALIC, 14));
+        routeName.setFont(new Font("sansserif", Font.ITALIC, 14));
+        driverNumber.setFont(new Font("sansserif", Font.ITALIC, 14));
         date.setFont(new Font("sansserif", Font.ITALIC, 14));
-        Trip.setFont(new Font("sansserif", Font.ITALIC, 14));
-        DeptTime.setFont(new Font("sansserif", Font.ITALIC, 14));
-        DriverName.setFont(new Font("sansserif", Font.ITALIC, 14));
-        DriverName.setForeground(Color.blue);
-        DeptTime.setForeground(Color.blue);
-        BusNo.setForeground(Color.blue);
-        RegNo.setForeground(Color.blue);
-        RouteNo.setForeground(Color.blue);
-        RouteName.setForeground(Color.blue);
-        DriverNo.setForeground(Color.blue);
-        DriverName.setForeground(Color.blue);
+        trip.setFont(new Font("sansserif", Font.ITALIC, 14));
+        departureTime.setFont(new Font("sansserif", Font.ITALIC, 14));
+        driverName.setFont(new Font("sansserif", Font.ITALIC, 14));
+        driverName.setForeground(Color.blue);
+        departureTime.setForeground(Color.blue);
+        busNumber.setForeground(Color.blue);
+        regNumber.setForeground(Color.blue);
+        routeNumber.setForeground(Color.blue);
+        routeName.setForeground(Color.blue);
+        driverNumber.setForeground(Color.blue);
+        driverName.setForeground(Color.blue);
         date.setForeground(Color.blue);
-        Trip.setForeground(Color.blue);
+        trip.setForeground(Color.blue);
 
         jPanel1 = new JPanel(new java.awt.GridLayout(9, 2));
-        jPanel1.add(BusNo);
+        jPanel1.add(busNumber);
         jPanel1.add(cboBusNo);
-        jPanel1.add(RegNo);
+        jPanel1.add(regNumber);
         jPanel1.add(cboRegNo);
-        jPanel1.add(RouteNo);
+        jPanel1.add(routeNumber);
         jPanel1.add(cboRouteNo);
-        jPanel1.add(RouteName);
+        jPanel1.add(routeName);
         jPanel1.add(cboRouteName);
-        jPanel1.add(DriverNo);
+        jPanel1.add(driverNumber);
         jPanel1.add(cboDriverNo);
-        jPanel1.add(DriverName);
+        jPanel1.add(driverName);
         jPanel1.add(cboDriverName);
-        jPanel1.add(DeptTime);
+        jPanel1.add(departureTime);
         jPanel1.add(txtDepTime);
         jPanel1.add(date);
-        jPanel1.add(s_date);
-        jPanel1.add(Trip);
+        jPanel1.add(sDate);
+        jPanel1.add(trip);
         jPanel1.add(cboTrip);
 
         cboRouteNo.addItem("Select");
@@ -127,9 +127,9 @@ public class Schedule extends JInternalFrame {
 
         jPanel4 = new javax.swing.JPanel(new java.awt.FlowLayout());
 //		jPanel4.add(Enable);
-        jPanel4.add(Check);
-        jPanel4.add(Schedule);
-        jPanel4.add(Cancel);
+        jPanel4.add(check);
+        jPanel4.add(schedule);
+        jPanel4.add(cancel);
         jPanel4.add(btnPrint);
         setSize(550, 330);
         add(jPanel3);
@@ -144,16 +144,16 @@ public class Schedule extends JInternalFrame {
         }
         setCbx();
         setCombo();
-        setrt();
+        setRoute();
 
-        Schedule.addActionListener(new ActionListener() {
+        schedule.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 validator();
             }
         });
         
-        Check.addActionListener(new java.awt.event.ActionListener() {
+        check.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 ScheduleList frm=new ScheduleList();
@@ -219,7 +219,7 @@ public class Schedule extends JInternalFrame {
 
             }
         });
-        Cancel.addActionListener(new java.awt.event.ActionListener() {
+        cancel.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 dispose();
@@ -254,7 +254,7 @@ public class Schedule extends JInternalFrame {
         }
     }
 
-    private void setrt() {
+    private void setRoute() {
         try {
             ResultSet rst = DBConnection.getDBConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -291,7 +291,7 @@ public class Schedule extends JInternalFrame {
 
     public void validator() {
         String SQL;        
-        SQL = ("SELECT * FROM Validator WHERE Bus_No='" + cboBusNo.getSelectedItem() + "' AND Trip_No='" + cboTrip.getSelectedItem() + "'AND Date_Schedule='" + s_date.getText() + "'OR DriverNo='" + cboDriverNo.getSelectedItem() + "' AND Trip_No='" + cboTrip.getSelectedItem() + "'AND Date_Schedule='" + s_date.getText() + "'");
+        SQL = ("SELECT * FROM Validator WHERE Bus_No='" + cboBusNo.getSelectedItem() + "' AND Trip_No='" + cboTrip.getSelectedItem() + "'AND Date_Schedule='" + sDate.getText() + "'OR DriverNo='" + cboDriverNo.getSelectedItem() + "' AND Trip_No='" + cboTrip.getSelectedItem() + "'AND Date_Schedule='" + sDate.getText() + "'");
         try {
             Statement stmt = DBConnection.getDBConnection().createStatement();
             stmt.execute(SQL);
@@ -345,7 +345,7 @@ public class Schedule extends JInternalFrame {
                                 cboRouteName.getSelectedItem() + "', '" +
                                 cboDriverNo.getSelectedItem() + "', '" +
                                 cboDriverName.getSelectedItem() + "', '" +
-                                s_date.getText() + "', '" +
+                                sDate.getText() + "', '" +
                                 cboTrip.getSelectedItem() + "', '" +
                                 txtDepTime.getText() + "')";
                         int result = statement.executeUpdate(temp);
@@ -353,7 +353,7 @@ public class Schedule extends JInternalFrame {
                                 cboBusNo.getSelectedItem() + "', '" +
                                 cboDriverNo.getSelectedItem() + "', '" +
                                 cboRouteNo.getSelectedItem() + "' ,'" +
-                                s_date.getText() + "' ,'" +
+                                sDate.getText() + "' ,'" +
                                 cboTrip.getSelectedItem() + "')";
 
                         int results = statement.executeUpdate(temp2);

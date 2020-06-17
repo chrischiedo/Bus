@@ -35,7 +35,7 @@ public class BusEntry extends JInternalFrame {
     private final JPanel buttonPanel;
     private JPanel jPanel5;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
     private final DateButton date_bought;
     private final DateButton date_ins;

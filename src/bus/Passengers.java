@@ -26,7 +26,7 @@ public class Passengers extends JPanel {
     private static final int rowCnt = 0;
     private static int selectedRow;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
 
     public Passengers() {

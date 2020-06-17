@@ -31,7 +31,7 @@ public class ScheduleList extends JInternalFrame {
     private static final int rowCnt = 0;
     private static int selectedRow;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
 
     public ScheduleList() {
@@ -59,9 +59,9 @@ public class ScheduleList extends JInternalFrame {
         try {
 
             Statement s = DBConnection.getDBConnection().createStatement();
-        } catch (Exception excp) {
-            excp.printStackTrace();
-            info = info + excp.toString();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            info = info + ex.toString();
 
 
         }
@@ -70,19 +70,19 @@ public class ScheduleList extends JInternalFrame {
             Statement statement = DBConnection.getDBConnection().createStatement();
             {
                 String temp = ("SELECT * FROM Schedules Order by Date_Scheduled");
-                int Numrow = 0;
+                int numRow = 0;
                 ResultSet result = statement.executeQuery(temp);
                 while (result.next()) {
-                    jTable.setValueAt(result.getString(1), Numrow, 0);
-                    jTable.setValueAt(result.getString(2), Numrow, 1);
-                    jTable.setValueAt(result.getString(3), Numrow, 2);
-                    jTable.setValueAt(result.getString(4), Numrow, 3);
-                    jTable.setValueAt(result.getString(5), Numrow, 4);
-                    jTable.setValueAt(result.getString(6), Numrow, 5);
-                    jTable.setValueAt(result.getString(7), Numrow, 6);
-                    jTable.setValueAt(result.getDate(8), Numrow, 7);
+                    jTable.setValueAt(result.getString(1), numRow, 0);
+                    jTable.setValueAt(result.getString(2), numRow, 1);
+                    jTable.setValueAt(result.getString(3), numRow, 2);
+                    jTable.setValueAt(result.getString(4), numRow, 3);
+                    jTable.setValueAt(result.getString(5), numRow, 4);
+                    jTable.setValueAt(result.getString(6), numRow, 5);
+                    jTable.setValueAt(result.getString(7), numRow, 6);
+                    jTable.setValueAt(result.getDate(8), numRow, 7);
 
-                    Numrow++;
+                    numRow++;
 
                 }
 
@@ -90,8 +90,8 @@ public class ScheduleList extends JInternalFrame {
 
             }
 
-        } catch (SQLException sqlex) {
-            txtInfo.append(sqlex.toString());
+        } catch (SQLException sqlEx) {
+            txtInfo.append(sqlEx.toString());
         }
         jButton4.addActionListener(new java.awt.event.ActionListener() {
 

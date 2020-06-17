@@ -35,7 +35,7 @@ public class BusRouteUpdate extends JInternalFrame {
     private final JPanel jPanel3;
     private final JPanel jPanel4;
     private final JPanel jPanel5;
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
 
     public BusRouteUpdate(String route, String name, String from, String to,

@@ -33,7 +33,7 @@ public class NewRoute extends JInternalFrame {
     private final JPanel jPanel4;
     private final JPanel jPanel5;
     private static final JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private Connection connection;
     private static String info;
 
     public NewRoute() {
