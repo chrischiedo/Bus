@@ -242,7 +242,7 @@ public class Schedule extends JInternalFrame {
         try {
             ResultSet rst = DBConnection.getDBConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE).executeQuery("SELECT Bus_RegNo,BusNo FROM Buses order by BusNo");
+                    ResultSet.CONCUR_UPDATABLE).executeQuery("SELECT Bus_RegNo,BusNo FROM Buses ORDER BY BusNo");
 
             while (rst.next()) {
 
