@@ -1,0 +1,8 @@
+out/
+.idea/
+*.iml
+nbproject/
+build/
+dist/
+lib/
+.DS_Store
