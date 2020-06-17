@@ -18,7 +18,7 @@ public class MDIWindow extends JFrame implements WindowListener {
     private JMenuItem mnuBusRpt,  mnuEmpRpt,  mnuSchedRpt,  mnuBookRpt;
     private JMenuItem mnuCalculator,  mnuNotepad;
     private JMenuItem mnuUsrMannual;
-    private JLabel welcome;
+    private final JLabel welcome;
     public static JDesktopPane desktop;
     String StrBusinesTitle;
     public JButton NewJButton;
@@ -374,7 +374,7 @@ public class MDIWindow extends JFrame implements WindowListener {
     }
 
     private void ConfirmExit() {
-        String ObjButtons[] = {"Yes", "No"};
+        String[] ObjButtons = {"Yes", "No"};
         int PromptResult = JOptionPane.showOptionDialog(null, "Are you sure to exit?",
                 "Confirm exit", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
         if (PromptResult == 0) {
@@ -382,7 +382,7 @@ public class MDIWindow extends JFrame implements WindowListener {
         }//if closed
     }//ConfirmExit() closed
     protected boolean isLoaded(String FormTitle) {
-        JInternalFrame Form[] = desktop.getAllFrames();
+        JInternalFrame[] Form = desktop.getAllFrames();
         for (int i = 0; i < Form.length; i++) {
             if (Form[i].getTitle().equalsIgnoreCase(FormTitle)) {
                 Form[i].show();

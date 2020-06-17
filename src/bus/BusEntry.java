@@ -13,19 +13,33 @@ import java.sql.*;
 
 public class BusEntry extends JInternalFrame {
 
-    private JLabel lblBusNo,  lblRegNo,  lblModel,  lblCapacity,  lblDOP,  lblInsuranceStatus,  lblDOI,  lblDOIE;
-    private JTextField txtBusNo,  txtRegNo,  txtModel,  txtCapacity,  txtIStatus;
-    private JButton btnAddNew,  btnCancel,  btnClear,  btnNext;
-    private JPanel fieldsPanel;
+    private final JLabel lblBusNo;
+    private final JLabel lblRegNo;
+    private final JLabel lblModel;
+    private final JLabel lblCapacity;
+    private final JLabel lblDOP;
+    private final JLabel lblInsuranceStatus;
+    private final JLabel lblDOI;
+    private final JLabel lblDOIE;
+    private final JTextField txtBusNo;
+    private final JTextField txtRegNo;
+    private final JTextField txtModel;
+    private final JTextField txtCapacity;
+    private final JTextField txtIStatus;
+    private final JButton btnAddNew;
+    private final JButton btnCancel;
+    private final JButton btnClear;
+    private JButton btnNext;
+    private final JPanel fieldsPanel;
     private JPanel jPanel3;
-    private JPanel buttonPanel;
+    private final JPanel buttonPanel;
     private JPanel jPanel5;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
-    private DateButton date_bought;
-    private DateButton date_ins;
-    private DateButton date_expiry;
+    private final DateButton date_bought;
+    private final DateButton date_ins;
+    private final DateButton date_expiry;
     private Date startDate;
     private Date endDate;
 
@@ -137,7 +151,7 @@ public class BusEntry extends JInternalFrame {
                             date_expiry.getText() + "')";
 
                     int result = stmt.executeUpdate(sql);
-                    String ObjButtons[] = {"Yes", "No"};
+                    String[] ObjButtons = {"Yes", "No"};
                     int PromptResult = JOptionPane.showOptionDialog(null, "Record succesfully added.Do you want to add another?",
                             "Success", JOptionPane.INFORMATION_MESSAGE, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                     if (PromptResult == 0) {

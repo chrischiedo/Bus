@@ -15,10 +15,10 @@ import javax.swing.JWindow;
 
 public class FormSplash {
 
-    private JLabel SplashImage;
-    private JLabel SplashText;
-    private JWindow window;
-    private JPanel panel;
+    private final JLabel SplashImage;
+    private final JLabel SplashText;
+    private final JWindow window;
+    private final JPanel panel;
     public FormSplash(int duration) {
         window=new JWindow();               
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();

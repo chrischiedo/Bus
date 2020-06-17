@@ -12,17 +12,17 @@ import java.sql.*;
 public class Route extends JPanel {
 
     private static javax.swing.JTable jTable;
-    private JScrollPane jScrollPane;
-    private JPanel jPanel1;
-    private JPanel jPanel2;
-    private JButton jButton1;
-    private JButton jButton2;
-    private JButton jButton3;
-    private JButton jButton4;
+    private final JScrollPane jScrollPane;
+    private final JPanel jPanel1;
+    private final JPanel jPanel2;
+    private final JButton jButton1;
+    private final JButton jButton2;
+    private final JButton jButton3;
+    private final JButton jButton4;
     private JButton AddNew,  Update,  Remove,  Search,  Clear,  Exit;
-    private static int rowCnt = 0;
+    private static final int rowCnt = 0;
     private static int selectedRow;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
 
@@ -142,10 +142,10 @@ public class Route extends JPanel {
 
     class AbstractTable extends javax.swing.table.AbstractTableModel {
 
-        private String[] columnNames = {"RouteNo", "Route Name", "From", "To",
+        private final String[] columnNames = {"RouteNo", "Route Name", "From", "To",
             "Distance", "Fare_Charged"
         };
-        private Object[][] data = new Object[100][6];
+        private final Object[][] data = new Object[100][6];
 
         public int getColumnCount() {
             return columnNames.length;

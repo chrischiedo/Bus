@@ -11,12 +11,29 @@ import java.sql.*;
 
 public class NewPassenger extends JInternalFrame {
 
-    private JLabel label1,  label2,  label3,  label4,  label5,  label6,  label7,  label8;
-    private JTextField text1,  text2,  text3,  text4,  text6;
-    private JButton button1,  button2,  button3,  button4;
-    private JPanel panel1,  panel2,  panel3;
-    private JComboBox combo1,  combo2;
-    private DateButton dob;
+    private final JLabel label1;
+    private final JLabel label2;
+    private final JLabel label3;
+    private final JLabel label4;
+    private final JLabel label5;
+    private final JLabel label6;
+    private final JLabel label7;
+    private JLabel label8;
+    private final JTextField text1;
+    private final JTextField text2;
+    private final JTextField text3;
+    private final JTextField text4;
+    private final JTextField text6;
+    private final JButton button1;
+    private final JButton button2;
+    private final JButton button3;
+    private JButton button4;
+    private final JPanel panel1;
+    private final JPanel panel2;
+    private final JPanel panel3;
+    private final JComboBox combo1;
+    private final JComboBox combo2;
+    private final DateButton dob;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public NewPassenger() {
@@ -180,7 +197,7 @@ public class NewPassenger extends JInternalFrame {
                                 combo2.getSelectedItem() + "')";
 
                         int result = statement.executeUpdate(temp);
-                        String ObjButtons[] = {"Yes", "No"};
+                        String[] ObjButtons = {"Yes", "No"};
                         int PromptResult = JOptionPane.showOptionDialog(null, "Record succesfully added.Do you want to add another?",
                                 "Success", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                         if (PromptResult == 0) {

@@ -22,11 +22,18 @@ import javax.swing.JTextField;
 
 public class NewUser extends JInternalFrame {
 
-    private JLabel lblUsername,  lblPassword,  lblConfirmMsg,  lblName,  lblCategory;
-    private JPasswordField txtPassword,  txtCPassword;
-    private JTextField txtUsername,  txtName;
-    private JButton btnSave,  btnCancel;
-    private JComboBox cmbCategory;
+    private final JLabel lblUsername;
+    private final JLabel lblPassword;
+    private final JLabel lblConfirmMsg;
+    private final JLabel lblName;
+    private final JLabel lblCategory;
+    private final JPasswordField txtPassword;
+    private final JPasswordField txtCPassword;
+    private final JTextField txtUsername;
+    private final JTextField txtName;
+    private final JButton btnSave;
+    private final JButton btnCancel;
+    private final JComboBox cmbCategory;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public NewUser() {
@@ -113,17 +120,17 @@ public class NewUser extends JInternalFrame {
                     txtUsername.requestFocus();
                     return;
                 }
-                if (txtPassword.getText() == null || txtPassword.getText().equals("")) {
+                if (txtPassword.getPassword() == null || txtPassword.getPassword().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Password", "Missing fields", JOptionPane.DEFAULT_OPTION);
                     txtPassword.requestFocus();
                     return;
                 }
-                if (txtCPassword.getText() == null || txtCPassword.getText().equals("")) {
+                if (txtCPassword.getPassword() == null || txtCPassword.getPassword().equals("")) {
                     JOptionPane.showMessageDialog(null, "Confirm your password", "Missing fields", JOptionPane.DEFAULT_OPTION);
                     txtCPassword.requestFocus();
                     return;
                 }
-                if (!txtPassword.getText().equals(txtCPassword.getText())) {
+                if (!txtPassword.getPassword().equals(txtCPassword.getPassword())) {
                     JOptionPane.showMessageDialog(null, "Passwords do not match.", "ERROR", JOptionPane.DEFAULT_OPTION);
                     txtCPassword.requestFocus();
                     return;
@@ -132,7 +139,7 @@ public class NewUser extends JInternalFrame {
                     Statement stmt = DBConnection.getDBConnection().createStatement();
                     String sql = "INSERT INTO users (Name,Category,username, password) VALUES ('" +
                             txtName.getText() + "', '" + cmbCategory.getSelectedItem() + "', '" +
-                            txtUsername.getText() + "', '" + txtPassword.getText() + "')";
+                            txtUsername.getText() + "', '" + txtPassword.getPassword() + "')";
                     int result = stmt.executeUpdate(sql);
                     if (result > 0) {
                         JOptionPane.showMessageDialog(null, "User details is succesfully added", "SUCCESS", JOptionPane.DEFAULT_OPTION);

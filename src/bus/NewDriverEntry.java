@@ -13,19 +13,40 @@ import java.sql.*;
 public class NewDriverEntry extends JInternalFrame {
 
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    private JLabel empNo,  Sname,  Fname,  Lname,  Gender,  Designation,  telephone,  lblEmplPic,  email,  address,  DOB;
-    private JTextField txtEmpNo,  txtSname,  txtFname,  txtLname,  txtDesignation,  txttelephone,  txtemail,  txtaddress;
-    private JButton jButton1;
-    private JButton jButton2,  AddPic;
-    private JButton Clear,  Next;
-    private JPanel jPanel1,  pics;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
-    private DateButton dob;
-    private JComboBox cbogender;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
-    private Connection dbconn;
+    private final JLabel employeeNumber;
+    private final JLabel surname;
+    private final JLabel firstName;
+    private final JLabel lastName;
+    private final JLabel gender;
+    private final JLabel designation;
+    private final JLabel telephone;
+    private final JLabel lblEmployeePic;
+    private final JLabel email;
+    private final JLabel address;
+    private final JLabel dateOfBirth;
+    private final JTextField txtEmployeeNumber;
+    private final JTextField txtSurname;
+    private final JTextField txtFirstName;
+    private final JTextField txtLastName;
+    private final JTextField txtDesignation;
+    private final JTextField txtTelephone;
+    private final JTextField txtEmail;
+    private final JTextField txtAddress;
+    private final JButton jButton1;
+    private final JButton jButton2;
+    private final JButton addPic;
+    private final JButton clear;
+    private JButton next;
+    private final JPanel jPanel1;
+    private final JPanel pics;
+    private final JPanel jPanel3;
+    private final JPanel jPanel4;
+    private final JPanel jPanel5;
+    private final DateButton dob;
+    private final JComboBox cboGender;
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
+    // private Connection dbconn;
+    private Connection connection;
     private static String info;
     final JFileChooser fc = new JFileChooser();
     String getPicture;
@@ -34,67 +55,67 @@ public class NewDriverEntry extends JInternalFrame {
 
         super("Add New Driver",false,true,false,true);
         setDefaultCloseOperation(javax.swing.JFrame.HIDE_ON_CLOSE);
-        empNo = new JLabel("Employee Number ");
-        Sname = new JLabel("Surname ");
-        Fname = new JLabel("First Name ");
-        Lname = new JLabel("Last Name ");
-        Gender = new JLabel("Gender ");
-        Designation = new JLabel("Designation ");
+        employeeNumber = new JLabel("Employee Number ");
+        surname = new JLabel("Surname ");
+        firstName = new JLabel("First Name ");
+        lastName = new JLabel("Last Name ");
+        gender = new JLabel("Gender ");
+        designation = new JLabel("Designation ");
         telephone = new JLabel("Telephone Number");
         email = new JLabel("E-mail Address");
         address = new JLabel("Address");
-        DOB = new JLabel("DOB");
-        lblEmplPic = new JLabel(new ImageIcon(ClassLoader.getSystemResource("images/defaultpic.png")));
-        txtEmpNo = new JTextField(10);
-        txtSname = new JTextField(10);
-        txtFname = new JTextField(10);
-        txtLname = new JTextField(10);
-        cbogender = new JComboBox();
+        dateOfBirth = new JLabel("DOB");
+        lblEmployeePic = new JLabel(new ImageIcon(ClassLoader.getSystemResource("images/defaultpic.png")));
+        txtEmployeeNumber = new JTextField(10);
+        txtSurname = new JTextField(10);
+        txtFirstName = new JTextField(10);
+        txtLastName = new JTextField(10);
+        cboGender = new JComboBox();
         txtDesignation = new JTextField(10);
-        txttelephone = new JTextField(10);
-        txtemail = new JTextField(10);
-        txtaddress = new JTextField(10);
+        txtTelephone = new JTextField(10);
+        txtEmail = new JTextField(10);
+        txtAddress = new JTextField(10);
 
         jButton1 = new JButton("Add Record", new ImageIcon(ClassLoader.getSystemResource("images/addnew.png")));
         jButton2 = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
-        Clear = new JButton("Clear", new ImageIcon(ClassLoader.getSystemResource("images/clear.png")));
-        AddPic = new JButton("Select pic");
+        clear = new JButton("Clear", new ImageIcon(ClassLoader.getSystemResource("images/clear.png")));
+        addPic = new JButton("Select pic");
         dob = new DateButton();
         dob.setForeground(Color.red);
 
         pics = new JPanel();
         pics.setPreferredSize(new Dimension(150, 250));
-        pics.add(lblEmplPic);
-        pics.add(AddPic);
+        pics.add(lblEmployeePic);
+        pics.add(addPic);
 
         jPanel1 = new JPanel(new java.awt.GridLayout(10, 2));
         jPanel1.setPreferredSize(new Dimension(400, 250));
-        jPanel1.add(empNo);
-        jPanel1.add(txtEmpNo);
-        jPanel1.add(Sname);
-        jPanel1.add(txtSname);
-        jPanel1.add(Fname);
-        jPanel1.add(txtFname);
-        jPanel1.add(Lname);
-        jPanel1.add(txtLname);
-        jPanel1.add(Gender);
-        jPanel1.add(cbogender);
+        jPanel1.add(employeeNumber);
+        jPanel1.add(txtEmployeeNumber);
+        jPanel1.add(surname);
+        jPanel1.add(txtSurname);
+        jPanel1.add(firstName);
+        jPanel1.add(txtFirstName);
+        jPanel1.add(lastName);
+        jPanel1.add(txtLastName);
+        jPanel1.add(gender);
+        jPanel1.add(cboGender);
 
-        jPanel1.add(DOB);
+        jPanel1.add(dateOfBirth);
         jPanel1.add(dob);
         jPanel1.add(telephone);
-        jPanel1.add(txttelephone);
+        jPanel1.add(txtTelephone);
         jPanel1.add(email);
-        jPanel1.add(txtemail);
+        jPanel1.add(txtEmail);
         jPanel1.add(address);
-        jPanel1.add(txtaddress);
-        jPanel1.add(Designation);
+        jPanel1.add(txtAddress);
+        jPanel1.add(designation);
         jPanel1.add(txtDesignation);
 
         jPanel4 = new JPanel();
         jPanel4.add(jButton1);
         jPanel4.add(jButton2);
-        jPanel4.add(Clear);
+        jPanel4.add(clear);
 
         jPanel3 = new JPanel();
         jPanel3.add(jPanel1);
@@ -103,8 +124,8 @@ public class NewDriverEntry extends JInternalFrame {
         add(jPanel3);
         setSize(400, 250);
         setResizable(false);
-        cbogender.addItem("Male");
-        cbogender.addItem("Female");
+        cboGender.addItem("Male");
+        cboGender.addItem("Female");
         setLocation((screen.width - 500) / 2, ((screen.height - 350) / 2));
         try {
             Statement s = DBConnection.getDBConnection().createStatement();
@@ -112,7 +133,7 @@ public class NewDriverEntry extends JInternalFrame {
             excp.printStackTrace();
         }
         generator();
-        txtSname.addKeyListener(new KeyAdapter() {
+        txtSurname.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
@@ -128,7 +149,7 @@ public class NewDriverEntry extends JInternalFrame {
                 }
             }
         });
-        txtFname.addKeyListener(new KeyAdapter() {
+        txtFirstName.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
@@ -144,7 +165,7 @@ public class NewDriverEntry extends JInternalFrame {
                 }
             }
         });
-        txtLname.addKeyListener(new KeyAdapter() {
+        txtLastName.addKeyListener(new KeyAdapter() {
 
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
@@ -178,7 +199,7 @@ public class NewDriverEntry extends JInternalFrame {
                 }
             }
         });
-        txttelephone.addFocusListener(new FocusAdapter() {
+        txtTelephone.addFocusListener(new FocusAdapter() {
 
             public void focusLost(FocusEvent e) {
                 JTextField textField =
@@ -191,7 +212,7 @@ public class NewDriverEntry extends JInternalFrame {
                         getToolkit().beep();
                         JOptionPane.showMessageDialog(null, "Invalid data entry", "Error",JOptionPane.DEFAULT_OPTION);
                         textField.requestFocus();
-                        txttelephone.setText("");
+                        txtTelephone.setText("");
                     }
                 }
             }
@@ -199,55 +220,55 @@ public class NewDriverEntry extends JInternalFrame {
         jButton1.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                if (txtEmpNo.getText() == null ||
-                        txtEmpNo.getText().equals("")) {
+                if (txtEmployeeNumber.getText() == null ||
+                        txtEmployeeNumber.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Employee Number",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txtEmpNo.requestFocus();
+                    txtEmployeeNumber.requestFocus();
                     return;
                 }
 
-                if (txtSname.getText() == null ||
-                        txtSname.getText().equals("")) {
+                if (txtSurname.getText() == null ||
+                        txtSurname.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Employee Surname ",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txtSname.requestFocus();
+                    txtSurname.requestFocus();
                     return;
                 }
 
-                if (txtFname.getText() == null ||
-                        txtFname.getText().equals("")) {
+                if (txtFirstName.getText() == null ||
+                        txtFirstName.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enetr Employee First Name",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txtFname.requestFocus();
+                    txtFirstName.requestFocus();
                     return;
                 }
 
-                if (txtLname.getText() == null ||
-                        txtLname.getText().equals("")) {
+                if (txtLastName.getText() == null ||
+                        txtLastName.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enetr Employee Last Name",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txtLname.requestFocus();
+                    txtLastName.requestFocus();
                     return;
                 }
-                if (txttelephone.getText() == null ||
-                        txttelephone.getText().equals("")) {
+                if (txtTelephone.getText() == null ||
+                        txtTelephone.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter telphone number",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txttelephone.requestFocus();
+                    txtTelephone.requestFocus();
                     return;
                 }
-                if (txtemail.getText() == null ||
-                        txtemail.getText().equals("")) {
+                if (txtEmail.getText() == null ||
+                        txtEmail.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter E-mail address",
                             "Error", JOptionPane.DEFAULT_OPTION);
-                    txtemail.requestFocus();
+                    txtEmail.requestFocus();
                     return;
                 }
-                if (txtaddress.getText() == null ||
-                        txtaddress.getText().equals("")) {
+                if (txtAddress.getText() == null ||
+                        txtAddress.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter Address","Error", JOptionPane.DEFAULT_OPTION);
-                    txtaddress.requestFocus();
+                    txtAddress.requestFocus();
                     return;
                 }
 
@@ -262,36 +283,36 @@ public class NewDriverEntry extends JInternalFrame {
                     Statement statement = DBConnection.getDBConnection().createStatement();
                     {
                         String temp = "INSERT INTO Emp (EmpNo, Sname, Fname, Lname, Gender,DOB,Designation,Telephone,E_Mail,Address) VALUES ('" +
-                                txtEmpNo.getText() + "', '" +
-                                txtSname.getText() + "', '" +
-                                txtFname.getText() + "', '" +
-                                txtLname.getText() + "', '" +
-                                cbogender.getSelectedItem() + "', '" +
+                                txtEmployeeNumber.getText() + "', '" +
+                                txtSurname.getText() + "', '" +
+                                txtFirstName.getText() + "', '" +
+                                txtLastName.getText() + "', '" +
+                                cboGender.getSelectedItem() + "', '" +
                                 dob.getText() + "', '" +
                                 txtDesignation.getText() + "', '" +
-                                txttelephone.getText() + "', '" +
-                                txtemail.getText() + "', '" +
-                                txtaddress.getText() + "')";
+                                txtTelephone.getText() + "', '" +
+                                txtEmail.getText() + "', '" +
+                                txtAddress.getText() + "')";
                         try {
-                            lblEmplPic.setIcon(new ImageIcon("Employees/" + txtEmpNo.getText() + ".png"));
+                            lblEmployeePic.setIcon(new ImageIcon("Employees/" + txtEmployeeNumber.getText() + ".png"));
                         } catch (Exception p) {
                         }
                         int result = statement.executeUpdate(temp);
-                        String ObjButtons[] = {"Yes", "No"};
+                        String[] ObjButtons = {"Yes", "No"};
                         int PromptResult = JOptionPane.showOptionDialog(null, "Record succesfully added.Do you want to add another?",
                                 "tobiluoch", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                         if (PromptResult == 0) {
                             generator();
 
-                            txtSname.setText("");
-                            txtFname.setText("");
-                            txtLname.setText("");
+                            txtSurname.setText("");
+                            txtFirstName.setText("");
+                            txtLastName.setText("");
 
                             txtDesignation.setText("");
-                            txttelephone.setText("");
-                            txtemail.setText("");
+                            txtTelephone.setText("");
+                            txtEmail.setText("");
 
-                            txtaddress.setText("");
+                            txtAddress.setText("");
 
                         } else {
                             new Employee().setVisible(true);
@@ -315,23 +336,23 @@ public class NewDriverEntry extends JInternalFrame {
                 dispose();
             }
         });
-        AddPic.addActionListener(new ActionListener() {
+        addPic.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 openFile();
             }
         });
-        Clear.addActionListener(new java.awt.event.ActionListener() {
+        clear.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
 
-                txtSname.setText("");
-                txtFname.setText("");
-                txtLname.setText("");
+                txtSurname.setText("");
+                txtFirstName.setText("");
+                txtLastName.setText("");
                 txtDesignation.setText("");
-                txttelephone.setText("");
-                txtemail.setText("");
-                txtaddress.setText("");
+                txtTelephone.setText("");
+                txtEmail.setText("");
+                txtAddress.setText("");
 
             }
         });
@@ -351,14 +372,14 @@ public class NewDriverEntry extends JInternalFrame {
             ResultSet rst = DBConnection.getDBConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE).executeQuery("SELECT empNo FROM Emp");
-            txtEmpNo.setText("1000");
+            txtEmployeeNumber.setText("1000");
             while (rst.next()) {
                 String s;
                 int number = rst.getInt(1);
                 number = number + 1;
 
                 s = "" + number;
-                txtEmpNo.setText(s);
+                txtEmployeeNumber.setText(s);
 
             }
         } catch (Exception n) {
@@ -372,7 +393,7 @@ public class NewDriverEntry extends JInternalFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File dialog = fc.getSelectedFile();
             getPicture = dialog.getPath();
-            lblEmplPic.setIcon(new ImageIcon(getPicture));
+            lblEmployeePic.setIcon(new ImageIcon(getPicture));
         }
     }
 }

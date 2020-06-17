@@ -15,13 +15,17 @@ import javax.swing.table.AbstractTableModel;
 public class Buses extends JPanel implements Printable {
 
     private static JTable tblBusList;
-    private JScrollPane jsp;
-    private JButton btnAddNew,  btnRefresh,  btnClose,  btnUpdate,  btnPrint;
-    private JPanel tablePanel;
-    private JPanel buttonPanel;
+    private final JScrollPane jsp;
+    private final JButton btnAddNew;
+    private final JButton btnRefresh;
+    private final JButton btnClose;
+    private final JButton btnUpdate;
+    private final JButton btnPrint;
+    private final JPanel tablePanel;
+    private final JPanel buttonPanel;
     private Statement stmt;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     private static int selectedRow;
     /*JFrame JFParentFrame;
     private static int rowCnt = 0;    
@@ -146,10 +150,10 @@ public class Buses extends JPanel implements Printable {
 
     class AbstractTable extends AbstractTableModel {
 
-        private String[] columnNames = {"RegNo", "BusNo", "Model", "Capacity",
+        private final String[] columnNames = {"RegNo", "BusNo", "Model", "Capacity",
             "Date purchased", "Insurance Status", "Date Insured", "Expiry Date"
         };
-        private Object[][] data = new Object[50][50];
+        private final Object[][] data = new Object[50][50];
 
         public int getColumnCount() {
             return columnNames.length;
@@ -203,7 +207,7 @@ public class Buses extends JPanel implements Printable {
         //leave room for page number
         double pageHeight = pageFormat.getImageableHeight() - fontHeight;
         double pageWidth = pageFormat.getImageableWidth();
-        double tableWidth = (double) tblBusList.getColumnModel().getTotalColumnWidth();
+        double tableWidth = tblBusList.getColumnModel().getTotalColumnWidth();
         double scale = 1;
         if (tableWidth >= pageWidth) {
             scale = pageWidth / tableWidth;

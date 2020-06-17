@@ -11,18 +11,28 @@ import java.sql.*;
 
 public class NewRoute extends JInternalFrame {
 
-    private JLabel routeNo,  routeName,  From,  To,  Distance,  Amount;
-    private JTextField txtRouteNo,  txtRouteName,  txtFrom,  txtTo,  txtDistance,  txtAmount;
+    private final JLabel routeNo;
+    private final JLabel routeName;
+    private final JLabel From;
+    private final JLabel To;
+    private final JLabel Distance;
+    private final JLabel Amount;
+    private final JTextField txtRouteNo;
+    private final JTextField txtRouteName;
+    private final JTextField txtFrom;
+    private final JTextField txtTo;
+    private final JTextField txtDistance;
+    private final JTextField txtAmount;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    private JButton AddNew;
-    private JButton Cancel;
-    private JButton Clear;
+    private final JButton AddNew;
+    private final JButton Cancel;
+    private final JButton Clear;
     private JButton Next;
-    private JPanel jPanel1;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private final JPanel jPanel1;
+    private final JPanel jPanel3;
+    private final JPanel jPanel4;
+    private final JPanel jPanel5;
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
 
@@ -221,7 +231,7 @@ public class NewRoute extends JInternalFrame {
                                 txtAmount.getText() + "')";
 
                         int result = statement.executeUpdate(temp);
-                        String ObjButtons[] = {"Yes", "No"};
+                        String[] ObjButtons = {"Yes", "No"};
                         int PromptResult = JOptionPane.showOptionDialog(null, "Record succesfully added.Do you want to add another?",
                                 "tobiluoch", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                         if (PromptResult == 0) {

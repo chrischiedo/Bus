@@ -11,18 +11,30 @@ import java.sql.*;
 
 public class BusRouteUpdate extends JInternalFrame {
 
-    private JLabel routeNo,  routeName,  From,  To,  Distance,  Amount;
-    private JTextField txtRouteNo,  txtRouteName,  txtFrom,  txtTo,  txtDistance,  txtAmount;
-    private JButton Update,  Search,  Clear;
+    private final JLabel routeNo;
+    private final JLabel routeName;
+    private final JLabel From;
+    private final JLabel To;
+    private final JLabel Distance;
+    private final JLabel Amount;
+    private final JTextField txtRouteNo;
+    private final JTextField txtRouteName;
+    private final JTextField txtFrom;
+    private final JTextField txtTo;
+    private final JTextField txtDistance;
+    private final JTextField txtAmount;
+    private final JButton Update;
+    private final JButton Search;
+    private final JButton Clear;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     String route, name, from, to, distance, amount;
-    private JButton Cancel;
-    private JPanel jPanel1;
+    private final JButton Cancel;
+    private final JPanel jPanel1;
     final JFileChooser fc = new JFileChooser();
     String getPicture;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
+    private final JPanel jPanel3;
+    private final JPanel jPanel4;
+    private final JPanel jPanel5;
     private Connection dbconn;
     private static String info;
 

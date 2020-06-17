@@ -19,11 +19,12 @@ class EmployeeReport extends JInternalFrame {
     public JComboBox graphTypesCombo;
     public Color skyblue = new Color(150, 190, 255);
     public final ImageIcon imageIcon = new ImageIcon("Icon/header/cool.png");
-    private static Connection dbcon = null;
+    private static final Connection dbcon = null;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     Statement stmt = null;
-    private JButton print,  cancel;
-    private JPanel panel;
+    private final JButton print;
+    private final JButton cancel;
+    private final JPanel panel;
 
     public EmployeeReport() {
 
@@ -53,7 +54,7 @@ class EmployeeReport extends JInternalFrame {
 
         listPane = new JTextArea() {
 
-            Image image = imageIcon.getImage();
+            final Image image = imageIcon.getImage();
 
             {
                 setOpaque(false);

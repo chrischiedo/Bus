@@ -11,11 +11,24 @@ import java.sql.*;
 
 public class Payment extends JInternalFrame {
 
-    private JLabel label1,  label2,  label3,  label4,  label5,  label6,  label7;
+    private final JLabel label1;
+    private final JLabel label2;
+    private final JLabel label3;
+    private final JLabel label4;
+    private final JLabel label5;
+    private final JLabel label6;
+    private final JLabel label7;
     public JTextField text1,  text4,  text5,  text6,  text7;
     public JComboBox combo1,  combo2,  combo3,  combo4,  combo5,  combo6,  combo7,  combo8;
-    private JButton button1,  button2,  button3,  button4,  button5,  button6;
-    private JPanel panel1,  pane,  panel3;
+    private final JButton button1;
+    private final JButton button2;
+    private final JButton button3;
+    private final JButton button4;
+    private final JButton button5;
+    private JButton button6;
+    private final JPanel panel1;
+    private final JPanel pane;
+    private final JPanel panel3;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     public DateButton p_date;
     String payNo, pasNo, pasName, mode, dt, amount, rev;

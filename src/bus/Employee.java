@@ -14,18 +14,22 @@ import javax.swing.table.AbstractTableModel;
 
 public class Employee extends JPanel {
 
-    private JScrollPane jsp;
+    private final JScrollPane jsp;
     private static JTable taleEmpList;
-    private JButton btnAddEntry,  btnRefresh,  btnUpdate,  btnClose,  btnPrint;
+    private final JButton btnAddEntry;
+    private final JButton btnRefresh;
+    private final JButton btnUpdate;
+    private final JButton btnClose;
+    private final JButton btnPrint;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     private Statement stmt;
     JFrame JFParentFrame;
-    private JPanel tablePanel;
-    private JPanel buttonPanel;
+    private final JPanel tablePanel;
+    private final JPanel buttonPanel;
     //private JButton searchButton;
-    private static int rowCnt = 0;
+    private static final int rowCnt = 0;
     private static int selectedRow;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
 
@@ -147,10 +151,10 @@ public class Employee extends JPanel {
 
     class AbstractTable extends AbstractTableModel {
 
-        private String[] columnNames = {"Driver Number", "Surname", "FirstName", "Last Name",
+        private final String[] columnNames = {"Driver Number", "Surname", "FirstName", "Last Name",
             "Gender", "DOB", "Designation", "Telephone", "E-mail", "Address"
         };
-        private Object[][] data = new Object[100][100];
+        private final Object[][] data = new Object[100][100];
 
         public int getColumnCount() {
             return columnNames.length;

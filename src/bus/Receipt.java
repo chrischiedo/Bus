@@ -23,9 +23,10 @@ class Receipt extends JInternalFrame {
     public int ID;
     public Color skyblue = new Color(150, 190, 255);
     public final ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("images/appicon.png"));
-    private static Connection dbcon = null;
-    private JButton print,  cancel;
-    private JPanel panel;
+    private static final Connection dbcon = null;
+    private final JButton print;
+    private final JButton cancel;
+    private final JPanel panel;
     Statement stmt = null;
 
     public Receipt() {
@@ -82,7 +83,7 @@ class Receipt extends JInternalFrame {
     public void produceCertificate() {
         listPane = new JTextArea() {
 
-            Image image = imageIcon.getImage();
+            final Image image = imageIcon.getImage();
 
             {
                 setOpaque(false);

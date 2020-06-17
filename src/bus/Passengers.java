@@ -15,16 +15,17 @@ public class Passengers extends JPanel {
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     JFrame JFParentFrame;
     private static JTable jTable;
-    private JScrollPane jScrollPane;
-    private JPanel jPanel1;
-    private JPanel jPanel2;
-    private JButton jButton1,  Reload;
-    private JButton jButton2;
-    private JButton jButton4;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    private static int rowCnt = 0;
+    private final JScrollPane jScrollPane;
+    private final JPanel jPanel1;
+    private final JPanel jPanel2;
+    private final JButton jButton1;
+    private final JButton Reload;
+    private final JButton jButton2;
+    private final JButton jButton4;
+    private final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    private static final int rowCnt = 0;
     private static int selectedRow;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
 
@@ -135,10 +136,10 @@ public class Passengers extends JPanel {
 
     class AbstractTable extends javax.swing.table.AbstractTableModel {
 
-        private String[] columnNames = {"Passenger_No", "Passenger_Name", "Address", "Telephone_Number",
+        private final String[] columnNames = {"Passenger_No", "Passenger_Name", "Address", "Telephone_Number",
             "Date_of_Travel", "From", "To"
         };
-        private Object[][] data = new Object[50][50];
+        private final Object[][] data = new Object[50][50];
 
         public int getColumnCount() {
             return columnNames.length;

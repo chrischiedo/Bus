@@ -11,19 +11,37 @@ import java.sql.*;
 
 public class Schedule extends JInternalFrame {
 
-    private JLabel BusNo,  RegNo,  RouteNo,  RouteName,  DriverNo,  DriverName,  DeptTime,  date,  Trip;
-    private JComboBox cboBusNo,  cboRouteNo,  cboRouteName,  cboDriverNo,  cboDriverName,  cboRegNo,  cboTrip;
-    private JTextField txtDepTime,  txtdate;
-    private JButton Check,  Schedule,  Cancel,  btnPrint;
-    private DateButton s_date;
+    private final JLabel BusNo;
+    private final JLabel RegNo;
+    private final JLabel RouteNo;
+    private final JLabel RouteName;
+    private final JLabel DriverNo;
+    private final JLabel DriverName;
+    private final JLabel DeptTime;
+    private final JLabel date;
+    private final JLabel Trip;
+    private final JComboBox cboBusNo;
+    private final JComboBox cboRouteNo;
+    private final JComboBox cboRouteName;
+    private final JComboBox cboDriverNo;
+    private final JComboBox cboDriverName;
+    private final JComboBox cboRegNo;
+    private final JComboBox cboTrip;
+    private final JTextField txtDepTime;
+    private JTextField txtdate;
+    private final JButton Check;
+    private final JButton Schedule;
+    private final JButton Cancel;
+    private final JButton btnPrint;
+    private final DateButton s_date;
     int Year;
     String is;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-    private JPanel jPanel1;
-    private JPanel jPanel3;
-    private JPanel jPanel4;
-    private JPanel jPanel5;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private final JPanel jPanel1;
+    private final JPanel jPanel3;
+    private final JPanel jPanel4;
+    private final JPanel jPanel5;
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     private Connection dbconn;
     private static String info;
 

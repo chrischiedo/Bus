@@ -24,12 +24,15 @@ import javax.swing.JTextField;
 
 public class LoginScreen extends JFrame {
     // field declarations
-    private JLabel lblUsername,  lblPasswd,  lblCat;
+    private final JLabel lblUsername;
+    private final JLabel lblPasswd;
+    private final JLabel lblCat;
     public JTextField txtUser;
-    private JPasswordField txtPasswd;
-    private JButton btnLogin,  btnCancel;
-    private JComboBox cmbCat;
-    private Connection con;
+    private final JPasswordField txtPasswd;
+    private final JButton btnLogin;
+    private final JButton btnCancel;
+    private final JComboBox cmbCat;
+    private final Connection con;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public LoginScreen() throws SQLException {
@@ -90,7 +93,7 @@ public class LoginScreen extends JFrame {
 
     public void login() {
         String username = txtUser.getText();
-        String password = txtPasswd.getText();
+        String password = String.valueOf(txtPasswd.getPassword());
         String SQL;
         String category = cmbCat.getSelectedItem().toString();
         SQL = "SELECT * FROM users WHERE username='" + username + "'  AND password='" +
@@ -99,8 +102,8 @@ public class LoginScreen extends JFrame {
             Statement stmt = con.createStatement();
             stmt.execute(SQL);
             ResultSet rs = stmt.getResultSet();
-            boolean recordfound = rs.next();
-            if (recordfound) {
+            boolean recordFound = rs.next();
+            if (recordFound) {
                 loadMDIWindow();
                 this.dispose();
             } else {
@@ -134,7 +137,7 @@ public class LoginScreen extends JFrame {
                     txtUser.requestFocus();
                     return;
                 }
-                if (txtPasswd.getText() == null || txtPasswd.getText().equals("")) {
+                if (txtPasswd.getPassword() == null || txtPasswd.getPassword().equals("")) {
                     JOptionPane.showMessageDialog(null, "Enter password", "Missing field", JOptionPane.DEFAULT_OPTION);
                     txtPasswd.requestFocus();
                     return;

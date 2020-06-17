@@ -11,14 +11,43 @@ import java.sql.*;
 
 public class Booking extends JInternalFrame {
 
-    private JPanel contents,  controls,  general,  pane;
-    private JLabel label,  label1,  label2,  label3,  label10,  label4,  label5,  label6,  label7,  label8,  label9;
-    private JTextField text1;
-    private JComboBox combo1,  combo2,  combo3,  combo4,  combo5,  combo6,  combo7,  combo8,  combo9;
-    private JButton button1,  button2,  button3,  button4,  button5,  button6,  button7,  ok,  next;
+    private final JPanel contents;
+    private final JPanel controls;
+    private final JPanel general;
+    private final JPanel pane;
+    private final JLabel label;
+    private final JLabel label1;
+    private final JLabel label2;
+    private final JLabel label3;
+    private final JLabel label10;
+    private final JLabel label4;
+    private final JLabel label5;
+    private final JLabel label6;
+    private final JLabel label7;
+    private final JLabel label8;
+    private final JLabel label9;
+    private final JTextField text1;
+    private final JComboBox combo1;
+    private final JComboBox combo2;
+    private final JComboBox combo3;
+    private final JComboBox combo4;
+    private final JComboBox combo5;
+    private final JComboBox combo6;
+    private final JComboBox combo7;
+    private final JComboBox combo8;
+    private final JComboBox combo9;
+    private final JButton button1;
+    private JButton button2;
+    private final JButton button3;
+    private final JButton button4;
+    private final JButton button5;
+    private final JButton button6;
+    private final JButton button7;
+    private final JButton ok;
+    private final JButton next;
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     String bookNo, pasNo, passName, seatNo, busNo, dte, time, frm, to, amount;
-    private DateButton t_date;
+    private final DateButton t_date;
 
     public Booking() {
         super("Booking Process",false,true,false,true);
@@ -439,7 +468,7 @@ public class Booking extends JInternalFrame {
                                 combo9.getSelectedItem() + "')";
 
                         int result = statement.executeUpdate(temp);
-                        String ObjButtons[] = {"Yes", "No"};
+                        String[] ObjButtons = {"Yes", "No"};
                         int PromptResult = JOptionPane.showOptionDialog(null, "Record succesfully added.Continue with Booking?",
                                 "tobiluoch", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, ObjButtons, ObjButtons[1]);
                         if (PromptResult == 0) {

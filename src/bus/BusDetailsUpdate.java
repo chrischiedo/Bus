@@ -11,17 +11,32 @@ import java.sql.*;
 
 public class BusDetailsUpdate extends JInternalFrame {
 
-    private JLabel BusNo,  RegNo,  Model,  Capacity,  DP,  Ins,  DI,  DE;
-    private JTextField txtBusNo,  txtRegNo,  txtModel,  txtCapacity,  txtIns;
-    private JButton btnUpdate,  btnSearch,  Load,  btnClear,  btnDelete;
+    private final JLabel BusNo;
+    private final JLabel RegNo;
+    private final JLabel Model;
+    private final JLabel Capacity;
+    private final JLabel DP;
+    private final JLabel Ins;
+    private final JLabel DI;
+    private final JLabel DE;
+    private final JTextField txtBusNo;
+    private final JTextField txtRegNo;
+    private final JTextField txtModel;
+    private final JTextField txtCapacity;
+    private final JTextField txtIns;
+    private final JButton btnUpdate;
+    private final JButton btnSearch;
+    private JButton Load;
+    private final JButton btnClear;
+    private final JButton btnDelete;
     String busNo, regNo, model, capacity, db, is, ie, id;
-    private JButton btnCancel;
-    private JPanel fieldsPanel;
-    private JPanel buttonPanel;
-    private DateButton date_bought;
-    private DateButton date_ins;
-    private DateButton date_expiry;
-    private static JTextArea txtInfo = new JTextArea(15, 40);
+    private final JButton btnCancel;
+    private final JPanel fieldsPanel;
+    private final JPanel buttonPanel;
+    private final DateButton date_bought;
+    private final DateButton date_ins;
+    private final DateButton date_expiry;
+    private static final JTextArea txtInfo = new JTextArea(15, 40);
     Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
     public BusDetailsUpdate(String regNo, String busNo, String model, String capacity,
