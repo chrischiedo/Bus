@@ -5,12 +5,9 @@ package bus;
  * @author chiedo
  */
 import java.awt.*;
-import java.text.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.sql.*;
-import javax.swing.plaf.metal.*;
 
 public class MDIWindow extends JFrame implements WindowListener {
 
@@ -121,7 +118,7 @@ public class MDIWindow extends JFrame implements WindowListener {
         mnuRoutes.setForeground(Color.blue);
         mnuRoutes.setFont(new Font("monospaced", Font.PLAIN, 12));
         mnuRoutes.setMnemonic('R');
-        mnuRoutes.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/routes.PNG")));
+        mnuRoutes.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/routes.png")));
         mnuRoutes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
         mnuRoutes.setActionCommand("routes");
         mnuRoutes.addActionListener(menulistener);
@@ -194,7 +191,7 @@ public class MDIWindow extends JFrame implements WindowListener {
         mnuBusRpt.setForeground(Color.blue);
         mnuBusRpt.setFont(new Font("monospaced", Font.PLAIN, 12));
         mnuBusRpt.setMnemonic('P');
-        mnuBusRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/busreport.PNG")));
+        mnuBusRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/busreport.png")));
         mnuBusRpt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
         mnuBusRpt.setActionCommand("busreport");
         mnuBusRpt.addActionListener(menulistener);
@@ -212,7 +209,7 @@ public class MDIWindow extends JFrame implements WindowListener {
         mnuSchedRpt.setForeground(Color.blue);
         mnuSchedRpt.setFont(new Font("monospaced", Font.PLAIN, 12));
         mnuSchedRpt.setMnemonic('S');
-        mnuSchedRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/schedreport.PNG")));
+        mnuSchedRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/schedreport.png")));
         mnuSchedRpt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
         mnuSchedRpt.setActionCommand("schedulereport");
         mnuSchedRpt.addActionListener(menulistener);
@@ -221,7 +218,7 @@ public class MDIWindow extends JFrame implements WindowListener {
         mnuBookRpt.setForeground(Color.blue);
         mnuBookRpt.setFont(new Font("monospaced", Font.PLAIN, 12));
         mnuBookRpt.setMnemonic('B');
-        mnuBookRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/bookreport.PNG")));
+        mnuBookRpt.setIcon(new ImageIcon(ClassLoader.getSystemResource("images/bookreport.png")));
         mnuBookRpt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
         mnuBookRpt.setActionCommand("bookrepoort");
         mnuBookRpt.addActionListener(menulistener);
@@ -331,19 +328,19 @@ public class MDIWindow extends JFrame implements WindowListener {
                 desktop.add(frm);
                 frm.setVisible(true);
             }else if(ActCmd.equalsIgnoreCase("busreport")){
-                Bus_Details frm=new Bus_Details();
+                BusDetails frm=new BusDetails();
                 desktop.add(frm);
                 frm.setVisible(true);
             }else if(ActCmd.equalsIgnoreCase("empreport")){
-                employee_report frm=new employee_report();
+                EmployeeReport frm=new EmployeeReport();
                 desktop.add(frm);
                 frm.setVisible(true);
             }else if(ActCmd.equalsIgnoreCase("schedulereport")){
-                Scheduling_report frm=new Scheduling_report();
+                ScheduleReport frm=new ScheduleReport();
                 desktop.add(frm);
                 frm.setVisible(true);
             }else if(ActCmd.equalsIgnoreCase("bookrepoort")){
-                Booking_report frm=new Booking_report();
+                BookingReport frm=new BookingReport();
                 desktop.add(frm);
                 frm.setVisible(true);
             }

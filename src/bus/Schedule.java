@@ -7,12 +7,7 @@ package bus;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.*;
-import java.io.*;
 import java.sql.*;
-import javax.swing.plaf.metal.*;
-import java.text.*;
 
 public class Schedule extends JInternalFrame {
 
@@ -55,7 +50,7 @@ public class Schedule extends JInternalFrame {
         Check = new JButton("View Shedules", new ImageIcon(ClassLoader.getSystemResource("images/viewschd.png")));
         Schedule = new JButton("Schedule", new ImageIcon(ClassLoader.getSystemResource("images/schd.png")));
         Cancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
-        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         s_date = new DateButton();
         cboTrip.addItem("1");
         cboTrip.addItem("2");
@@ -143,19 +138,19 @@ public class Schedule extends JInternalFrame {
         Check.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                Show_schedules frm=new Show_schedules();
+                ScheduleList frm=new ScheduleList();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try{
                     frm.setSelected(true);
                 }catch(Exception ex){}
-            new Show_schedules().setVisible(true);
+            new ScheduleList().setVisible(true);
             }
         });
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                Scheduling_report frm=new Scheduling_report();
+                ScheduleReport frm=new ScheduleReport();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try{

@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginScreen extends JFrame {
-
+    // field declarations
     private JLabel lblUsername,  lblPasswd,  lblCat;
     public JTextField txtUser;
     private JPasswordField txtPasswd;
@@ -49,7 +49,7 @@ public class LoginScreen extends JFrame {
         cmbCat.addItem("Manager");
         cmbCat.addItem("Supervisor");
         cmbCat.addItem("Booking Clerk");
-        btnLogin = new JButton("Login", new ImageIcon(ClassLoader.getSystemResource("images/Login.png")));
+        btnLogin = new JButton("Login", new ImageIcon(ClassLoader.getSystemResource("images/login.png")));
         btnCancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/cancel.png")));
 
         lblUsername.setBounds(40, 30, 100, 25);
@@ -86,7 +86,7 @@ public class LoginScreen extends JFrame {
             JOptionPane.showMessageDialog(null, "Error on establishing database connection", "Error", JOptionPane.ERROR_MESSAGE);
             this.dispose();
         }
-    }//constructor closed
+    } // constructor closed
 
     public void login() {
         String username = txtUser.getText();
@@ -101,7 +101,7 @@ public class LoginScreen extends JFrame {
             ResultSet rs = stmt.getResultSet();
             boolean recordfound = rs.next();
             if (recordfound) {
-                LoadMDIWindow();                
+                loadMDIWindow();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "The system could not log you in.\n" +
@@ -114,15 +114,15 @@ public class LoginScreen extends JFrame {
             System.err.println(e);
             JOptionPane.showMessageDialog(null, "Error on login operation", "Login Error", JOptionPane.ERROR_MESSAGE);
         }//try catch closed
-    }//Login() closed
-        public void LoadMDIWindow() {
-        if (cmbCat.getSelectedItem().equals("Manager")) {
-            new MDIWindow().LoginManager();            
-        } else if (cmbCat.getSelectedItem().equals("Supervisor")) {
-            new MDIWindow().LoginSupervisor();
-        } else {
-            new MDIWindow().LoginClerk();
-        }
+    } // login() closed
+    public void loadMDIWindow() {
+    if (cmbCat.getSelectedItem().equals("Manager")) {
+        new MDIWindow().LoginManager();
+    } else if (cmbCat.getSelectedItem().equals("Supervisor")) {
+        new MDIWindow().LoginSupervisor();
+    } else {
+        new MDIWindow().LoginClerk();
+    }
     }//LoginValidity() closed
         
     private class ButtonListener implements ActionListener {
@@ -142,8 +142,8 @@ public class LoginScreen extends JFrame {
                 login();
             } else if (e.getSource() == btnCancel) {
                 System.exit(0);
-            }//if else closed
-        }//actionPerformed() closed
-    }//ButtonListner class closed
+            } //if else closed
+        } //actionPerformed() closed
+    } //ButtonListener class closed
 
 }//LoginScreen class closed

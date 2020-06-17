@@ -17,7 +17,7 @@ public class Main implements Runnable{
         frame.setVisible(true);
     }//run method closed
     public static void main(String args[]) throws SQLException{
-        new frmSplash(3000);
+        new FormSplash(3000);
         EventQueue.invokeLater(new Main(new LoginScreen()));
     }//main method closed
 

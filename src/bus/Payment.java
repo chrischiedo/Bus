@@ -5,12 +5,9 @@ package bus;
  * @author chiedo
  */
 import java.awt.*;
-import java.text.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.sql.*;
-import javax.swing.plaf.metal.*;
 
 public class Payment extends JInternalFrame {
 
@@ -46,10 +43,10 @@ public class Payment extends JInternalFrame {
         combo4.addItem("Bank");
         combo8 = new JComboBox();
         button1 = new JButton("Pay", new ImageIcon(ClassLoader.getSystemResource("images/payments.png")));
-        button2 = new JButton("Print Receipt", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        button2 = new JButton("Print Receipt", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         button3 = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
         button4 = new JButton("Search", new ImageIcon(ClassLoader.getSystemResource("images/search.png")));
-        button5 = new JButton("Delete", new ImageIcon(ClassLoader.getSystemResource("images/delete.PNG")));
+        button5 = new JButton("Delete", new ImageIcon(ClassLoader.getSystemResource("images/delete.png")));
         //combo3.addItem(new)
         panel1 = new JPanel(new GridLayout(7, 2));
         panel1.setPreferredSize(new Dimension(350, 250));

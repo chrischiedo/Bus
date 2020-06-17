@@ -7,9 +7,6 @@ package bus;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.*;
-import java.io.*;
 import java.sql.*;
 
 public class Route extends JPanel {
@@ -71,7 +68,7 @@ public class Route extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 //new AddNew().setVisible(true);
-                AddRoute frm = new AddRoute();
+                NewRoute frm = new NewRoute();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try {
@@ -84,7 +81,7 @@ public class Route extends JPanel {
         jButton2.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                UpdateRoute frm = new UpdateRoute(jTable.getValueAt(getSelectedRow(), 0).toString(),
+                BusRouteUpdate frm = new BusRouteUpdate(jTable.getValueAt(getSelectedRow(), 0).toString(),
                         jTable.getValueAt(getSelectedRow(), 1).toString(),
                         jTable.getValueAt(getSelectedRow(), 2).toString(),
                         jTable.getValueAt(getSelectedRow(), 3).toString(),

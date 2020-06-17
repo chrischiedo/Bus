@@ -5,12 +5,9 @@ package bus;
  * @author chiedo
  */
 import java.awt.*;
-import java.text.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.io.*;
 import java.sql.*;
-import javax.swing.plaf.metal.*;
 
 public class Booking extends JInternalFrame {
 
@@ -58,9 +55,9 @@ public class Booking extends JInternalFrame {
         button1 = new JButton("Add New", new ImageIcon(ClassLoader.getSystemResource("images/addnew.png")));
         button3 = new JButton("Search", new ImageIcon(ClassLoader.getSystemResource("images/search.png")));
         button4 = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
-        button5 = new JButton("Clear", new ImageIcon(ClassLoader.getSystemResource("images/clear.PNG")));
+        button5 = new JButton("Clear", new ImageIcon(ClassLoader.getSystemResource("images/clear.png")));
         button6 = new JButton("Show Booked", new ImageIcon(ClassLoader.getSystemResource("images/atten.png")));
-        button7 = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        button7 = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         ok = new JButton("OK", new ImageIcon(ClassLoader.getSystemResource("images/ok.png")));
         next = new JButton("Next", new ImageIcon(ClassLoader.getSystemResource("images/next.png")));
         button1.setEnabled(false);
@@ -189,7 +186,7 @@ public class Booking extends JInternalFrame {
         button6.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                Show_Booked frm= new Show_Booked();
+                BookedBusesList frm= new BookedBusesList();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try{
@@ -200,7 +197,7 @@ public class Booking extends JInternalFrame {
         button7.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-               Booking_report frm= new Booking_report();
+               BookingReport frm= new BookingReport();
                MDIWindow.desktop.add(frm);
                frm.setVisible(true);
                try{

@@ -5,17 +5,9 @@ package bus;
  * @author chiedo
  */
 import java.awt.*;
-import java.awt.event.*;
 import java.sql.*;
 import javax.swing.*;
 import java.text.*;
-import java.util.Date;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
-import javax.swing.*;
-import java.text.*;
-import java.util.Date;
 
 class Receipt extends JInternalFrame {
 
@@ -43,7 +35,7 @@ class Receipt extends JInternalFrame {
         content = getContentPane();
         content.setBackground(skyblue);
 
-        print = new JButton("Print ", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        print = new JButton("Print ", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         cancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
         panel = new JPanel();
         panel.add(print);

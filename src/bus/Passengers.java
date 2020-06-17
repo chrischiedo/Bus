@@ -7,9 +7,6 @@ package bus;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.*;
-import java.io.*;
 import java.text.*;
 import java.sql.*;
 
@@ -65,7 +62,7 @@ public class Passengers extends JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-               AddPassenger frm=new AddPassenger();
+               NewPassenger frm=new NewPassenger();
                MDIWindow.desktop.add(frm);
                frm.setVisible(true);
                try{
@@ -92,7 +89,7 @@ public class Passengers extends JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                UpdatePass frm=new UpdatePass(jTable.getValueAt(getSelectedRow(), 0).toString(),
+                PassengerDetailsUpdate frm=new PassengerDetailsUpdate(jTable.getValueAt(getSelectedRow(), 0).toString(),
                         jTable.getValueAt(getSelectedRow(), 1).toString(),
                         jTable.getValueAt(getSelectedRow(), 2).toString(),
                         jTable.getValueAt(getSelectedRow(), 3).toString(),

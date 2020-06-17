@@ -45,7 +45,7 @@ public class NewUser extends JInternalFrame {
         txtUsername = new JTextField();
         txtPassword = new JPasswordField();
         txtCPassword = new JPasswordField();
-        btnSave = new JButton("Save", new ImageIcon(ClassLoader.getSystemResource("images/save.PNG")));
+        btnSave = new JButton("Save", new ImageIcon(ClassLoader.getSystemResource("images/save.png")));
         btnCancel = new JButton("Cancel", new ImageIcon(ClassLoader.getSystemResource("images/cancel.png")));
 
         cmbCategory.addItem("Manager");

@@ -7,9 +7,6 @@ package bus;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.*;
-import java.io.*;
 import java.sql.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -47,7 +44,7 @@ public class Employee extends JPanel {
         btnAddEntry = new JButton("Add Entry", new ImageIcon(ClassLoader.getSystemResource("images/addnew.png")));
         btnRefresh = new JButton("Refresh", new ImageIcon(ClassLoader.getSystemResource("images/refresh.png")));
         btnUpdate = new JButton("Update", new ImageIcon(ClassLoader.getSystemResource("images/update.png")));
-        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         btnClose = new JButton("Close", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
 
         buttonPanel = new JPanel(new FlowLayout());
@@ -68,7 +65,7 @@ public class Employee extends JPanel {
         btnAddEntry.addActionListener(new ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                AddNewEntry frm=new AddNewEntry();
+                NewDriverEntry frm=new NewDriverEntry();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try{
@@ -80,7 +77,7 @@ public class Employee extends JPanel {
         btnUpdate.addActionListener(new ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                NewEntry frm = new NewEntry(taleEmpList.getValueAt(getSelectedRow(), 0).toString(),
+                NewEmployeeEntry frm = new NewEmployeeEntry(taleEmpList.getValueAt(getSelectedRow(), 0).toString(),
                         taleEmpList.getValueAt(getSelectedRow(), 1).toString(),
                         taleEmpList.getValueAt(getSelectedRow(), 2).toString(),
                         taleEmpList.getValueAt(getSelectedRow(), 3).toString(),
@@ -106,7 +103,7 @@ public class Employee extends JPanel {
         btnPrint.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent evt) {
-                employee_report frm = new employee_report();
+                EmployeeReport frm = new EmployeeReport();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try {

@@ -7,9 +7,6 @@ package bus;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.*;
-import java.io.*;
 import java.text.*;
 import java.sql.*;
 import java.awt.print.*;
@@ -52,7 +49,7 @@ public class Buses extends JPanel implements Printable {
         btnUpdate = new JButton("Update", new ImageIcon(ClassLoader.getSystemResource("images/update.png")));
         btnRefresh = new JButton("Refresh", new ImageIcon(ClassLoader.getSystemResource("images/refresh.png")));
         btnClose = new JButton("Close", new ImageIcon(ClassLoader.getSystemResource("images/exit.png")));
-        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.PNG")));
+        btnPrint = new JButton("Print", new ImageIcon(ClassLoader.getSystemResource("images/print.png")));
         buttonPanel = new javax.swing.JPanel(new java.awt.FlowLayout());
         buttonPanel.add(btnAddNew);
         buttonPanel.add(btnUpdate);
@@ -73,7 +70,7 @@ public class Buses extends JPanel implements Printable {
         btnAddNew.addActionListener(new java.awt.event.ActionListener() {
 
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                AddEntry frm = new AddEntry();
+                BusEntry frm = new BusEntry();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try {
@@ -99,7 +96,7 @@ public class Buses extends JPanel implements Printable {
         btnPrint.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent evt) {
-                Bus_Details frm = new Bus_Details();
+                BusDetails frm = new BusDetails();
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
                 try {
@@ -120,7 +117,7 @@ public class Buses extends JPanel implements Printable {
                 is = tblBusList.getValueAt(getSelectedRow(), 5).toString();
                 ie = tblBusList.getValueAt(getSelectedRow(), 6).toString();
                 id = tblBusList.getValueAt(getSelectedRow(), 7).toString();
-                UpdateEntry frm = new UpdateEntry(regNo, busNo, Model, capacity, db, is, ie, id);
+                BusDetailsUpdate frm = new BusDetailsUpdate(regNo, busNo, Model, capacity, db, is, ie, id);
                 MDIWindow.desktop.add(frm);
                 frm.setVisible(true);
             }
